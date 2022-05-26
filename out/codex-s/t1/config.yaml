@@ -1,0 +1,27 @@
+do-checkpoint: True
+job-modes:
+  - validate
+  - test
+dataset:
+  name: codex-s
+  num_entities: 2034
+  num_relations: 42
+train:
+  model_type: ensemble
+ensemble:
+  base_ranker_checkpoint_path: out/codex-s/kge.ckpt
+  reranker_checkpoint_path: out/codex-s/biencoder.ckpt
+search:
+  parameters:
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_head_batch
+    type: range
+    value_type: float
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_tail_batch
+    type: range
+    value_type: float

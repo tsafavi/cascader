@@ -1,0 +1,27 @@
+do-checkpoint: True
+job-modes:
+  - validate
+  - test
+dataset:
+  name: repodb
+  num_entities: 2748
+  num_relations: 1
+train:
+  model_type: ensemble
+ensemble:
+  base_ranker_checkpoint_path: out/repodb/t1/checkpoints/checkpoint_best.ckpt
+  reranker_checkpoint_path: out/repodb/crossencoder.ckpt
+search:
+  parameters:
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_head_batch
+    type: range
+    value_type: float
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_tail_batch
+    type: range
+    value_type: float
