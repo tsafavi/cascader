@@ -7,5 +7,5 @@ if [ "$DATASET" == "fb15k-237" ] || [ "$DATASET" == "wn18rr" ]; then
     exit 1
 fi
 
-python src/main.py ${DATASET}/t1/config.yaml --search  # run reranking at tier 1
-python src/main.py ${DATASET}/t2/config.yaml --search  # run reranking at tier 2
+python src/main.py out/${DATASET}/t1/config.yaml --search  # run reranking at tier 1
+python src/main.py out/${DATASET}/t2/config.yaml --search  # run reranking at tier 2
