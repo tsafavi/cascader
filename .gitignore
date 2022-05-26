@@ -19,3 +19,4 @@ fig/
 libkge/
 trial_*/
 job_metrics.tsv
+trials.csv
