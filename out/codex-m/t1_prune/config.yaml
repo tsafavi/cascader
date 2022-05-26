@@ -1,0 +1,22 @@
+do-checkpoint: True
+monitor:
+  metric: mrr_quantile_0.9
+dataset:
+  name: codex-m
+  num_entities: 17050
+  num_relations: 51
+  splits:
+    train: valid_train
+    valid: valid_dev
+    test:
+      - valid
+      - test
+train:
+  model_type: answer_selector
+  batch_size: 16
+  max_epochs: 100
+  lr: 0.001
+eval:
+  check_val_every_n: 5
+answer_selector:
+  base_ranker_checkpoint_path: out/codex-m/t1/checkpoints/checkpoint_best.ckpt

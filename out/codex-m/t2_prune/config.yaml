@@ -1,0 +1,30 @@
+do-checkpoint: True
+job-modes:
+  - validate
+  - test
+dataset:
+  name: codex-m
+  num_entities: 17050
+  num_relations: 51
+train:
+  model_type: ensemble
+ensemble:
+  base_ranker_checkpoint_path: out/codex-m/t1/checkpoints/checkpoint_best.ckpt
+  reranker_checkpoint_path: out/codex-m/crossencoder.ckpt
+  answer_selector_checkpoint_path: out/codex-m/t1_prune/checkpoints/checkpoint_best.ckpt
+  answer_selector_type: dynamic
+  quantile: 0.9
+search:
+  parameters:
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_head_batch
+    type: range
+    value_type: float
+  - bounds:
+    - 0.05
+    - 0.95
+    name: ensemble.reranker_weight_tail_batch
+    type: range
+    value_type: float
