@@ -32,10 +32,10 @@ This will set up the `data/repodb/` directory, consisting of entity and relation
 ## Download models
 To download three pretrained models (KGE, dual-encoder, & cross-encoder) for a given dataset, use the following:
 ```
-chmod u+x download_data.sh
-./download_data.sh <dataset_name>
+chmod u+x download_models.sh
+./download_models.sh <dataset_name>
 ```
-For example, the command `./download_data.sh repodb` will download the following files:
+For example, the command `./download_data.sh repodb` will download a zip and extract the following files:
 - `out/repodb/kge.ckpt`
 - `out/repodb/biencoder.ckpt`
 - `out/repodb/crossencoder.ckpt`
